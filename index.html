@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Australia's AI Economy 2030</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --bg:       #0f0f0f;
+  --bg2:      #161616;
+  --bg3:      #1e1e1e;
+  --rule:     rgba(255,255,255,0.08);
+  --rule2:    rgba(255,255,255,0.14);
+  --text:     #d4cfc8;
+  --text-dim: #7a7570;
+  --text-hd:  #f0ece5;
+  --gold:     #c8a96e;
+  --gold-dim: rgba(200,169,110,0.18);
+  --red:      #b85c5c;
+  --green:    #5c9c7a;
+  --blue:     #5c84b8;
+  --mono:     'Courier New', monospace;
+  --serif:    'Lora', Georgia, serif;
+  --sans:     'Inter', system-ui, sans-serif;
+  --col:      680px;
+  --col-wide: 860px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.82;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── PROGRESS ── */
+#bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: var(--gold);
+  width: 0%;
+  z-index: 200;
+  transition: width 0.08s linear;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  background: rgba(15,15,15,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-brand {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 0;
+}
+
+.nav-links a {
+  display: block;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 0 1rem;
+  line-height: 52px;
+  transition: color 0.15s;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--text-hd); }
+
+/* ── TOC SIDEBAR ── */
+#toc {
+  position: fixed;
+  left: 0; top: 52px; bottom: 0;
+  width: 200px;
+  padding: 2.5rem 1.5rem 2rem;
+  overflow-y: auto;
+  border-right: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.toc-label {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 1.25rem;
+}
+
+.toc-item {
+  display: block;
+  font-family: var(--sans);
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 0.45rem 0;
+  border-left: 2px solid transparent;
+  padding-left: 0.75rem;
+  margin-left: -0.75rem;
+  transition: all 0.15s;
+}
+
+.toc-item:hover { color: var(--text); }
+.toc-item.active { color: var(--gold); border-left-color: var(--gold); }
+
+/* ── MAIN CONTENT ── */
+main {
+  margin-left: 200px;
+  padding-top: 52px;
+  min-height: 100vh;
+}
+
+/* ── HERO ── */
+#hero {
+  padding: 8rem 0 6rem;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-inner {
+  max-width: var(--col);
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.hero-date {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 2.5rem;
+}
+
+#hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 600;
+  color: var(--text-hd);
+  line-height: 1.18;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+#hero h1 em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.hero-byline {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 3rem;
+  letter-spacing: 0.02em;
+}
+
+.hero-cta-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.5rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: #0f0f0f;
+  border: 1px solid var(--gold);
+}
+
+.btn-primary:hover { background: #d4b87e; }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--rule2);
+}
+
+.btn-secondary:hover { color: var(--text); border-color: var(--text-dim); }
+
+.hero-abstract {
+  background: var(--bg2);
+  border: 1px solid var(--rule2);
+  border-left: 3px solid var(--gold);
+  padding: 1.75rem 2rem;
+  text-align: left;
+  border-radius: 2px;
+}
+
+.abstract-label {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.abstract-text {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.78;
+  font-style: italic;
+}
+
+/* ── ARTICLE BODY ── */
+article {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 0 2rem 8rem;
+}
+
+/* ── SECTION ── */
+.essay-section {
+  padding-top: 5rem;
+  border-top: 1px solid var(--rule);
+  margin-top: 5rem;
+}
+
+.essay-section:first-child {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 5rem;
+}
+
+.section-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+  max-width: 80px;
+}
+
+.essay-section h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 600;
+  color: var(--text-hd);
+  line-height: 1.25;
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.essay-section h2 em { color: var(--gold); font-style: italic; }
+
+/* ── PROSE ── */
+.prose p {
+  margin-bottom: 1.4rem;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+.prose p:last-child { margin-bottom: 0; }
+
+/* ── PLACEHOLDER ── */
+.placeholder {
+  color: var(--text-dim);
+  font-style: italic;
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.8;
+  border-left: 2px solid rgba(200,169,110,0.25);
+  padding-left: 1.25rem;
+  margin-bottom: 1.4rem;
+}
+
+/* ── SCENARIO TABS ── */
+.scenario-wrapper {
+  margin: 2.5rem 0;
+}
+
+.s-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--rule2);
+  margin-bottom: 0;
+}
+
+.s-tab {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.25rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  font-family: var(--sans);
+}
+
+.s-tab:hover { color: var(--text); }
+.s-tab.t-base.active  { color: var(--blue);  border-bottom-color: var(--blue); }
+.s-tab.t-up.active    { color: var(--green); border-bottom-color: var(--green); }
+.s-tab.t-down.active  { color: var(--red);   border-bottom-color: var(--red); }
+
+.s-panel { display: none; padding-top: 2rem; }
+.s-panel.active { display: block; }
+
+.s-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+  padding: 1.5rem 1.75rem;
+  border-radius: 2px;
+}
+
+.s-head.base  { background: rgba(92,132,184,0.08);  border-left: 3px solid var(--blue); }
+.s-head.up    { background: rgba(92,156,122,0.08);  border-left: 3px solid var(--green); }
+.s-head.down  { background: rgba(184,92,92,0.08);   border-left: 3px solid var(--red); }
+
+.s-tag {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 2px;
+  white-space: nowrap;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.base .s-tag  { background: rgba(92,132,184,0.18);  color: var(--blue); }
+.up .s-tag    { background: rgba(92,156,122,0.18);  color: var(--green); }
+.down .s-tag  { background: rgba(184,92,92,0.18);   color: var(--red); }
+
+.s-title {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-hd);
+  margin-bottom: 0.25rem;
+}
+
+.s-sub {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.s-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 1.75rem;
+}
+
+.s-metric {
+  padding: 1rem 1.25rem;
+  background: var(--bg2);
+}
+
+.s-metric .val {
+  display: block;
+  font-family: var(--sans);
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--text-hd);
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.02em;
+}
+
+.s-metric .lbl {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* ── PULL QUOTE ── */
+.pull-quote {
+  margin: 2.5rem 0;
+  padding: 1.5rem 2rem;
+  border-left: 3px solid var(--gold);
+  background: var(--gold-dim);
+  border-radius: 0 2px 2px 0;
+}
+
+.pull-quote p {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-hd);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.pull-quote cite {
+  display: block;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 0.6rem;
+  font-style: normal;
+}
+
+/* ── CAPABILITY GRID ── */
+.cap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+.cap-cell {
+  background: var(--bg2);
+  padding: 1.5rem 1.5rem;
+  transition: background 0.15s;
+}
+
+.cap-cell:hover { background: var(--bg3); }
+
+.cap-num {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.cap-title {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-hd);
+  margin-bottom: 0.6rem;
+  line-height: 1.35;
+}
+
+.cap-body {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+/* ── POLICY LIST ── */
+.policy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 2rem 0;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.policy-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.15s;
+}
+
+.policy-item:last-child { border-bottom: none; }
+.policy-item:hover { background: var(--bg3); }
+
+.policy-num {
+  font-family: var(--sans);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--rule2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--rule);
+  letter-spacing: -0.03em;
+}
+
+.policy-content { padding: 1.25rem 1.5rem; }
+
+.policy-title {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-hd);
+  margin-bottom: 0.4rem;
+  line-height: 1.4;
+}
+
+.policy-body {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+/* ── METHODS TWO-COL ── */
+.methods-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin: 2rem 0;
+  align-items: start;
+}
+
+.methods-block-title {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.src-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.src-list li {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.55;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--rule);
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.src-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+
+/* ── REFERENCES ── */
+.ref-list {
+  counter-reset: refs;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.ref-list li {
+  counter-increment: refs;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 0.75rem;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text-dim);
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--rule);
+  line-height: 1.55;
+}
+
+.ref-list li::before {
+  content: counter(refs);
+  color: var(--gold);
+  font-weight: 500;
+  text-align: right;
+  margin-top: 1px;
+}
+
+.ref-ph { font-style: italic; color: rgba(122,117,112,0.6); }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 2.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.footer-brand span { color: var(--gold); }
+
+/* ── FADE IN ── */
+.fade { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.fade.in { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  #toc { display: none; }
+  main { margin-left: 0; }
+  .nav-links { display: none; }
+  .cap-grid { grid-template-columns: 1fr; }
+  .methods-cols { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  #hero { padding: 5rem 0 4rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="bar"></div>
+
+<nav>
+  <a class="nav-brand" href="#hero">AU AI Economy 2030</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#thesis">Thesis</a></li>
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#scenarios">Scenarios</a></li>
+    <li><a href="#policy">Policy</a></li>
+    <li><a href="#methods">Methods</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+<aside id="toc">
+  <div class="toc-label">Contents</div>
+  <a class="toc-item" href="#thesis">Landing / Thesis</a>
+  <a class="toc-item" href="#capabilities">Capabilities → Economic Channels</a>
+  <a class="toc-item" href="#scenarios">Scenarios</a>
+  <a class="toc-item" href="#policy">Policy Playbook</a>
+  <a class="toc-item" href="#methods">Methods &amp; Data</a>
+  <a class="toc-item" href="#conclusion">Conclusion</a>
+  <a class="toc-item" href="#references">References</a>
+</aside>
+
+<main>
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-date">[Author · Institution · Year]</div>
+      <h1>Australia's AI Economy 2030:<br><em>Productivity Boom</em> or Labour Market Shock?</h1>
+      <div class="hero-byline">[Author Name] &nbsp;·&nbsp; [Co-Author if any] &nbsp;·&nbsp; [Subject / Course Code]</div>
+      <div class="hero-cta-row">
+        <a class="btn btn-primary" href="#thesis">Read the essay</a>
+        <a class="btn btn-secondary" href="#references">References</a>
+      </div>
+      <div class="hero-abstract">
+        <div class="abstract-label">Abstract</div>
+        <p class="abstract-text">
+          [Paste your abstract here — 3 to 5 sentences summarising the question, methodology, key findings, and implications. This appears on the landing screen before the reader scrolls into the essay proper.]
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <article>
+
+    <!-- ── 1. LANDING / THESIS ── -->
+    <div class="essay-section fade" id="thesis">
+      <div class="section-eyebrow">01 &nbsp; Landing / Thesis</div>
+      <h2>The Question That Cannot Wait</h2>
+      <div class="prose">
+        <p class="placeholder">[Paste your opening paragraph here. Introduce the central tension — Australia stands at an inflection point as AI reshapes production, labour, and distribution. Establish stakes and situate the question within current policy debates.]</p>
+        <p class="placeholder">[Second paragraph of introduction. You might frame the historical analogy — past technological transitions, what made them different, why AI may be categorically distinct — and define the scope of the analysis: Australia, 2025–2030, economic impact.]</p>
+
+        <div class="pull-quote">
+          <p>[Paste a strong thesis statement or key claim here — this is your argument, in one or two sentences, that will be supported across the rest of the essay.]</p>
+          <cite>Thesis</cite>
+        </div>
+
+        <p class="placeholder">[Continue the introduction here — roadmap paragraph. Tell the reader what each section will cover and how the argument builds.]</p>
+      </div>
+    </div>
+
+    <!-- ── 2. CAPABILITIES → ECONOMIC CHANNELS ── -->
+    <div class="essay-section fade" id="capabilities">
+      <div class="section-eyebrow">02 &nbsp; Capabilities → Economic Channels</div>
+      <h2>How AI Capabilities <em>Translate</em> into Economic Effects</h2>
+      <div class="prose">
+        <p class="placeholder">[Opening paragraph: explain the analytical framework you are using to connect AI capabilities to economic outcomes. What are the primary transmission mechanisms — automation of tasks, augmentation of labour, general-purpose technology spillovers, innovation acceleration?]</p>
+      </div>
+
+      <div class="cap-grid">
+        <div class="cap-cell">
+          <div class="cap-num">Channel 01</div>
+          <div class="cap-title">[Channel Name — e.g. Task Automation]</div>
+          <div class="cap-body">[Replace: describe this capability and its economic transmission — which tasks, which industries, which workers in Australia are most exposed.]</div>
+        </div>
+        <div class="cap-cell">
+          <div class="cap-num">Channel 02</div>
+          <div class="cap-title">[Channel Name — e.g. Labour Augmentation]</div>
+          <div class="cap-body">[Replace: describe how AI complements rather than replaces in this channel — wage effects, productivity gains, reskilling demand.]</div>
+        </div>
+        <div class="cap-cell">
+          <div class="cap-num">Channel 03</div>
+          <div class="cap-title">[Channel Name — e.g. Innovation Acceleration]</div>
+          <div class="cap-body">[Replace: AI-driven R&amp;D compression — how faster knowledge generation feeds into Australian sectors like mining, agriculture, biotech.]</div>
+        </div>
+        <div class="cap-cell">
+          <div class="cap-num">Channel 04</div>
+          <div class="cap-title">[Channel Name — e.g. Service Export Uplift]</div>
+          <div class="cap-body">[Replace: how AI boosts Australian professional, financial, and educational services exports in a globally competitive market.]</div>
+        </div>
+        <div class="cap-cell">
+          <div class="cap-num">Channel 05</div>
+          <div class="cap-title">[Channel Name — e.g. Concentration &amp; Market Power]</div>
+          <div class="cap-body">[Replace: distributional risk — AI advantages accrue disproportionately to incumbents; implications for SMEs, regional labour markets, inequality.]</div>
+        </div>
+        <div class="cap-cell">
+          <div class="cap-num">Channel 06</div>
+          <div class="cap-title">[Channel Name — e.g. Transition Friction]</div>
+          <div class="cap-body">[Replace: structural unemployment risk during adjustment — skill mismatch, geographic displacement, sectoral decline pace vs reskilling speed.]</div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p class="placeholder">[Follow-up paragraph: synthesise across the channels. Which are dominant in the Australian context given its industry structure, skills base, and geographic position? Conclude this section with a transition to scenario analysis.]</p>
+      </div>
+    </div>
+
+    <!-- ── 3. SCENARIOS ── -->
+    <div class="essay-section fade" id="scenarios">
+      <div class="section-eyebrow">03 &nbsp; Scenarios</div>
+      <h2>Three Futures to <em>2030</em></h2>
+      <div class="prose">
+        <p class="placeholder">[Introductory paragraph: explain your scenario-planning methodology. What are the two or three key uncertainties that drive divergence across futures — pace of adoption, policy response quality, international AI race dynamics? Briefly describe each scenario.]</p>
+      </div>
+
+      <div class="scenario-wrapper">
+        <div class="s-tabs">
+          <button class="s-tab t-base active" onclick="switchS('base')">Baseline</button>
+          <button class="s-tab t-up"          onclick="switchS('up')">Upside</button>
+          <button class="s-tab t-down"        onclick="switchS('down')">Downside</button>
+        </div>
+
+        <!-- BASELINE -->
+        <div class="s-panel active" id="sp-base">
+          <div class="s-head base">
+            <div>
+              <div class="s-title">Steady Transition</div>
+              <div class="s-sub">[One line — e.g. Moderate adoption, measured policy, gradual labour market recomposition without acute shock.]</div>
+            </div>
+            <span class="s-tag">Baseline</span>
+          </div>
+          <div class="s-metrics">
+            <div class="s-metric"><span class="val">[X]%</span><span class="lbl">GDP Delta</span></div>
+            <div class="s-metric"><span class="val">[X]%</span><span class="lbl">Unemployment</span></div>
+            <div class="s-metric"><span class="val">[X]M</span><span class="lbl">Displaced</span></div>
+            <div class="s-metric"><span class="val">[X]M</span><span class="lbl">New Roles</span></div>
+          </div>
+          <div class="prose">
+            <p class="placeholder">[Baseline narrative — approximately 150–200 words. Describe the key assumptions: pace of AI adoption, policy settings, trade environment, reskilling capacity. Trace the projected economic path: which sectors grow, which contract, what happens to real wages and employment composition. Note where the baseline can tilt upward or downward. Replace this placeholder with your text.]</p>
+            <p class="placeholder">[Additional baseline paragraph if needed — sector-specific detail, distributional effects across states or occupation groups, any particular vulnerabilities in the Australian baseline.]</p>
+          </div>
+        </div>
+
+        <!-- UPSIDE -->
+        <div class="s-panel" id="sp-up">
+          <div class="s-head up">
+            <div>
+              <div class="s-title">Productivity Boom</div>
+              <div class="s-sub">[One line — e.g. Rapid adoption, proactive policy, first-mover advantage in AI-enabled exports, strong complementarity gains.]</div>
+            </div>
+            <span class="s-tag">Upside</span>
+          </div>
+          <div class="s-metrics">
+            <div class="s-metric"><span class="val">[X]%</span><span class="lbl">GDP Delta</span></div>
+            <div class="s-metric"><span class="val">[X]%</span><span class="lbl">Unemployment</span></div>
+            <div class="s-metric"><span class="val">[X]M</span><span class="lbl">Displaced</span></div>
+            <div class="s-metric"><span class="val">[X]M</span><span class="lbl">New Roles</span></div>
+          </div>
+          <div class="prose">
+            <p class="placeholder">[Upside narrative — approximately 150–200 words. What conditions unlock strong productivity gains? Which sectors lead the boom — professional services, resources, health? How does reskilling keep pace with displacement? What does this mean for real wages and living standards? Are there risks even in the boom — concentration, inflation, housing, regional divergence? Replace with your text.]</p>
+            <p class="placeholder">[Additional upside paragraph if needed — policy preconditions that must be in place by 2026 to achieve this scenario. Replace with your text.]</p>
+          </div>
+        </div>
+
+        <!-- DOWNSIDE -->
+        <div class="s-panel" id="sp-down">
+          <div class="s-head down">
+            <div>
+              <div class="s-title">Labour Market Shock</div>
+              <div class="s-sub">[One line — e.g. Rapid displacement, policy lag, structural unemployment, concentrated gains, widening inequality.]</div>
+            </div>
+            <span class="s-tag">Downside</span>
+          </div>
+          <div class="s-metrics">
+            <div class="s-metric"><span class="val">[X]%</span><span class="lbl">GDP Delta</span></div>
+            <div class="s-metric"><span class="val">[X]%</span><span class="lbl">Unemployment</span></div>
+            <div class="s-metric"><span class="val">[X]M</span><span class="lbl">Displaced</span></div>
+            <div class="s-metric"><span class="val">[X]M</span><span class="lbl">New Roles</span></div>
+          </div>
+          <div class="prose">
+            <p class="placeholder">[Downside narrative — approximately 150–200 words. What conditions produce a negative net outcome? Which workers and regions are hardest hit — routine cognitive workers, outer suburbs, mid-size cities? What feedback loops amplify the shock — political backlash, reduced investment, inequality-driven demand compression? What would reversal require and over what timeframe? Replace with your text.]</p>
+            <p class="placeholder">[Additional downside paragraph if needed — comparison to historical labour market shocks (auto industry, manufacturing offshoring) and what Australia did and did not do well. Replace with your text.]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 4. POLICY PLAYBOOK ── -->
+    <div class="essay-section fade" id="policy">
+      <div class="section-eyebrow">04 &nbsp; Policy Playbook</div>
+      <h2>What Governments <em>Must</em> Get Right</h2>
+      <div class="prose">
+        <p class="placeholder">[Opening paragraph: frame the policy challenge. What is the window for intervention — when does the trajectory lock in? What institutional actors matter most — federal government, states, industry bodies, universities, RBA? What are the binding constraints on policy (fiscal space, political economy, regulatory capacity)?]</p>
+      </div>
+
+      <div class="policy-list">
+        <div class="policy-item">
+          <div class="policy-num">01</div>
+          <div class="policy-content">
+            <div class="policy-title">[Policy Lever 1 — e.g. National AI Reskilling Fund]</div>
+            <div class="policy-body">[Replace: rationale, mechanism, target groups, estimated cost/benefit, international precedents, implementation risks. Write 2–4 sentences of substantive policy content.]</div>
+          </div>
+        </div>
+        <div class="policy-item">
+          <div class="policy-num">02</div>
+          <div class="policy-content">
+            <div class="policy-title">[Policy Lever 2 — e.g. Regulatory Sandbox for AI Deployment]</div>
+            <div class="policy-body">[Replace: what sectors, what guardrails, how it unlocks productivity without removing protections, how it interacts with existing ASIC/APRA/TGA frameworks.]</div>
+          </div>
+        </div>
+        <div class="policy-item">
+          <div class="policy-num">03</div>
+          <div class="policy-content">
+            <div class="policy-title">[Policy Lever 3 — e.g. Worker Transition Income Support]</div>
+            <div class="policy-body">[Replace: income support design, eligibility, conditionality, targeting displaced workers in high-exposure occupations, fiscal cost estimates.]</div>
+          </div>
+        </div>
+        <div class="policy-item">
+          <div class="policy-num">04</div>
+          <div class="policy-content">
+            <div class="policy-title">[Policy Lever 4 — e.g. Sovereign AI Compute Infrastructure]</div>
+            <div class="policy-body">[Replace: rationale for public investment in compute or national AI capability, SME access, funding model, risks of industrial policy failure.]</div>
+          </div>
+        </div>
+        <div class="policy-item">
+          <div class="policy-num">05</div>
+          <div class="policy-content">
+            <div class="policy-title">[Policy Lever 5 — e.g. AI Adoption Incentives for SMEs]</div>
+            <div class="policy-body">[Replace: tax treatment, grant programs, advisory services, how to avoid incumbent capture. Reference comparable programs internationally — UK, Singapore, Canada.]</div>
+          </div>
+        </div>
+        <div class="policy-item">
+          <div class="policy-num">06</div>
+          <div class="policy-content">
+            <div class="policy-title">[Policy Lever 6 — e.g. International AI Governance Engagement]</div>
+            <div class="policy-body">[Replace: Australia's role in standards bodies, bilateral agreements, Indo-Pacific AI cooperation, alignment with OECD AI principles, trade dimensions.]</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p class="placeholder">[Closing paragraph for this section: which policy levers are highest leverage? What sequencing matters? What are the political economy obstacles and how might they be overcome? Transition to Methods.]</p>
+      </div>
+    </div>
+
+    <!-- ── 5. METHODS & DATA ── -->
+    <div class="essay-section fade" id="methods">
+      <div class="section-eyebrow">05 &nbsp; Methods &amp; Data</div>
+      <h2>Analytical Approach and <em>Evidence Base</em></h2>
+      <div class="prose">
+        <p class="placeholder">[Brief introduction to your methods section — explain why the methodological choices matter for interpreting your findings.]</p>
+      </div>
+
+      <div class="methods-cols">
+        <div>
+          <div class="methods-block-title">Analytical Approach</div>
+          <div class="prose">
+            <p class="placeholder">[Describe your methodology in 120–160 words: quantitative framework used (e.g. occupational exposure analysis, CGE model, input-output framework), any literature synthesis or qualitative case analysis, how scenario bounds were derived, key assumptions and sensitivity considerations. Replace with your text.]</p>
+            <p class="placeholder">[Note key limitations: data gaps, model uncertainty, time horizon ambiguity, scope restrictions (e.g. excludes defence, informal economy). Replace with your text.]</p>
+          </div>
+        </div>
+        <div>
+          <div class="methods-block-title">Data Sources</div>
+          <ul class="src-list">
+            <li>[Source 1 — e.g. ABS Labour Force Survey, Cat. 6202.0, various years]</li>
+            <li>[Source 2 — e.g. OECD AI Indicators database, 2024]</li>
+            <li>[Source 3 — e.g. Jobs and Skills Australia, Occupation Profile data]</li>
+            <li>[Source 4 — e.g. Productivity Commission research papers]</li>
+            <li>[Source 5 — e.g. Treasury Intergenerational Report 2023]</li>
+            <li>[Source 6 — e.g. McKinsey Global Institute, The economic potential of generative AI, 2023]</li>
+            <li>[Source 7 — e.g. Acemoglu (2024), IMF Working Papers on AI and labour]</li>
+            <li>[Add further sources as needed]</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 6. CONCLUSION ── -->
+    <div class="essay-section fade" id="conclusion">
+      <div class="section-eyebrow">06 &nbsp; Conclusion</div>
+      <h2>The Path <em>Australia</em> Chooses</h2>
+      <div class="prose">
+        <p class="placeholder">[Opening of conclusion — restate the central question and your thesis. Which scenario do you judge most probable, and why? What is the single most important insight this analysis yields?]</p>
+        <p class="placeholder">[Body of conclusion — draw together the key findings: how capabilities channel into economic outcomes; why scenarios diverge; which policy levers are most consequential. Show how the argument has been built across sections.]</p>
+
+        <div class="pull-quote">
+          <p>[Paste a powerful closing line, memorable summary claim, or call to action. This is the last thing readers will carry with them.]</p>
+          <cite>Conclusion</cite>
+        </div>
+
+        <p class="placeholder">[Final paragraph — broaden the lens. What does Australia's AI economic story mean for the social contract, for democratic governance of technology, or for Australia's place in the global AI order? Flag directions for future research or remaining open questions.]</p>
+      </div>
+    </div>
+
+    <!-- ── 7. REFERENCES ── -->
+    <div class="essay-section fade" id="references">
+      <div class="section-eyebrow">07 &nbsp; References</div>
+      <h2>References</h2>
+      <p style="font-family:var(--sans); font-size:13px; color:var(--text-dim); margin-bottom:1.5rem;">Replace each placeholder with a full citation in your preferred format (APA, Chicago, Harvard). Delete unused rows.</p>
+      <ol class="ref-list">
+        <li><span class="ref-ph">[Author, A. (Year). Title of work. Journal/Publisher, Volume(Issue), pages. https://doi.org/…]</span></li>
+        <li><span class="ref-ph">[Author, B., &amp; Author, C. (Year). Title of work. Journal/Publisher, Volume(Issue), pages. https://doi.org/…]</span></li>
+        <li><span class="ref-ph">[Organisation. (Year). Report title. Retrieved from URL]</span></li>
+        <li><span class="ref-ph">[Author, D. (Year). Title of work. Journal/Publisher, Volume(Issue), pages. https://doi.org/…]</span></li>
+        <li><span class="ref-ph">[Author, E. (Year). Title of work. Journal/Publisher, Volume(Issue), pages. https://doi.org/…]</span></li>
+        <li><span class="ref-ph">[Author, F. (Year). Title of work. Journal/Publisher, Volume(Issue), pages. https://doi.org/…]</span></li>
+        <li><span class="ref-ph">[Author, G. (Year). Title of work. Journal/Publisher, Volume(Issue), pages. https://doi.org/…]</span></li>
+        <li><span class="ref-ph">[Author, H. (Year). Title of work. Journal/Publisher, Volume(Issue), pages. https://doi.org/…]</span></li>
+        <li><span class="ref-ph">[Author, I. (Year). Title of work. Journal/Publisher, Volume(Issue), pages. https://doi.org/…]</span></li>
+        <li><span class="ref-ph">[Author, J. (Year). Title of work. Journal/Publisher, Volume(Issue), pages. https://doi.org/…]</span></li>
+        <li><span class="ref-ph">[Add further references as required]</span></li>
+      </ol>
+    </div>
+
+  </article>
+
+  <footer>
+    <div class="footer-brand">Australia's AI Economy 2030 &nbsp;·&nbsp; <span>[Author]</span> &nbsp;·&nbsp; [Year]</div>
+  </footer>
+</main>
+
+<script>
+  function switchS(name) {
+    document.querySelectorAll('.s-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.s-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('sp-' + name).classList.add('active');
+    document.querySelector('.s-tab.t-' + name).classList.add('active');
+  }
+
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    document.getElementById('bar').style.width = pct + '%';
+  });
+
+  // TOC + nav active state
+  const sections = document.querySelectorAll('.essay-section[id], #hero');
+  const tocItems = document.querySelectorAll('.toc-item');
+  const navAs = document.querySelectorAll('.nav-links a');
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = '#' + e.target.id;
+        tocItems.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+        navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => io.observe(s));
+
+  // Fade in
+  const fades = document.querySelectorAll('.fade');
+  const fio = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); fio.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  fades.forEach(el => fio.observe(el));
+</script>
+</body>
+</html>
